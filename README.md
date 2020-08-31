@@ -7,3 +7,13 @@ A straight Python translation would have resulted in prohibitive runtimes, since
 This is not exactly one of those cases: porting the raytracing code to numpy required significant refactoring, because the original C++ code was following one ray's route at a time. With numpy, which is efficient when rather big arrays are used, the only practical way is to compute the same operation in parallel on all rays at the same time. This leads to significant overheads when some computations are later discarded, or when these arrays must be shuffled around for the next computation step.
 
 The resulting program is somewhat longer and, at times, less easy to follow. The rendering speed on my PC is 3x slower than the C++ version, which is not a bad result given all the limitations of the language.
+
+```
+time python main.py
+Elapsed time: 64.653 s
+```
+```
+time python main_optimized.py
+Elapsed time: 28.727 s
+```
+
