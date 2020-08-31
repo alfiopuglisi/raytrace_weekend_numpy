@@ -213,6 +213,9 @@ def random_in_unit_disk(n):
 
    
 def render_image(width, height):
+
+    print('%dx%d pixels, %d samples per pixel' % (width, height, samples_per_pixel))
+
     with Timer():
         ii, jj = np.mgrid[:float(height), :float(width)]
 
@@ -223,6 +226,7 @@ def render_image(width, height):
 
         img = Vec3.zeros(width * height)
         for s in range(samples_per_pixel):
+            print('Starting sample %d of %d' % ((s+1), samples_per_pixel))
 
             uu = u + my_random(0.0, 1.0, u.size) / (width - 1)
             vv = v + my_random(0.0, 1.0, v.size) / (height - 1)
@@ -232,6 +236,9 @@ def render_image(width, height):
             img += ray_color(r)
 
         img *= 1.0 / samples_per_pixel
+        img.x = np.sqrt(img.x)
+        img.y = np.sqrt(img.y)
+        img.z = np.sqrt(img.z)
         return img.clip(0.0, 0.999)
 
 
@@ -550,10 +557,10 @@ world.append(Sphere(Point3( 0, 1, 0), 1.0, Dielectric(1.5)))
 world.append(Sphere(Point3(-4, 1, 0), 1.0, Lambertian(Color(0.4, 0.2, 0.1))))
 world.append(Sphere(Point3( 4, 1, 0), 1.0, Metal(Color(0.7, 0.6, 0.5), 0.0)))
 
-image_width = 1000
-aspect_ratio = 3/2
+image_width = 1200
+aspect_ratio = 16/9
 image_height = int(image_width / aspect_ratio)
-samples_per_pixel = 3
+samples_per_pixel = 10
 max_depth = 50
 
 def get_camera():
