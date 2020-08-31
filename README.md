@@ -10,10 +10,14 @@ The resulting program is somewhat longer and, at times, less easy to follow. The
 
 ```
 time python main.py
+1000x666 pixels, 3 samples per pixel
+...
 Elapsed time: 64.653 s
 ```
 ```
 time python main_optimized.py
+1000x666 pixels, 3 samples per pixel
+...
 Elapsed time: 28.727 s
 ```
 
