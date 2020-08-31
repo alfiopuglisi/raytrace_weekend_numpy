@@ -22,7 +22,7 @@ $ python main_optimized.py
 Elapsed time: 110.440 s
 ```
 
-Non-optimizied version:
+Non-optimized version:
 ```
 $ python main.py
 1200x675 pixels, 10 samples per pixel
@@ -42,4 +42,4 @@ Done.
 real	0m48.474s
 ```
 
-
+![Rendered image](/images/img.bmp)
